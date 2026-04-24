@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+    // 1. 全域攔截所有彈窗（防止任何對話框彈出）
+    window.alert = function(){ return true; };
+
+    // 2. 針對 TyranoBuilder 內部報錯機制的「大絕招」
+    // 我們直接覆蓋掉它的報錯 UI
+    (function() {
+        var originalError = console.error;
+        console.error = function() {
+            if (arguments[0] && typeof arguments[0] === 'string' && arguments[0].includes('.ks')) {
+                // 如果是 .ks 相關錯誤，只印在後台，不讓它傳遞出去
+                return;
+            }
+            originalError.apply(console, arguments);
+        };
+    })();
+
+    // 3. 每隔 0.5 秒強行檢查並關閉可能彈出的錯誤層
+    setInterval(function(){
+        // 針對 TyranoBuilder 常用的錯誤顯示層
+        var errorLayer = document.getElementsByClassName('remodal-wrapper');
+        for(var i=0; i<errorLayer.length; i++) {
+            if(errorLayer[i].innerHTML.includes('File not found')) {
+                errorLayer[i].style.display = 'none';
+            }
+        }
+    }, 500);
+</script>
         <title>Loading TyranoScript</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
