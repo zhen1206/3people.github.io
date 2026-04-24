@@ -1,0 +1,8 @@
+[preload  storage="./data/bgimage/title.jpg"  ]
+[preload  storage="./data/bgimage/room.jpg"  ]
+[preload  storage="./data/bgimage/Gemini_Generated_Image_w5w4a9w5w4a9w5w4.png"  ]
+[preload  storage="./data/bgimage/df2be7d14a984e38f3e32299eae7dff0.jpg"  ]
+[preload  storage="./data/bgimage/可韓家_下午.jpg"  ]
+[preload  storage="./data/bgimage/可韓房間.jpg"  ]
+[preload  storage="./data/bgimage/bg_base.png"  ]
+[return]
